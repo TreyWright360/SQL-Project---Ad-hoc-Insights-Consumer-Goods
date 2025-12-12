@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtliQ Hardwares - Executive Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo-section">
+                <!-- Simple CSS Logo -->
+                <div class="atliq-logo">
+                    <span>AH</span>
+                </div>
+                <h1>ATLIQ HARDWARES - EXECUTIVE DASHBOARD</h1>
+            </div>
+            <div class="header-controls">
+                <div class="slicer-group">
+                    <label>Fiscal Year:</label>
+                    <div class="toggle-buttons" id="fy-filter">
+                        <button class="active" data-value="2021">2021</button>
+                        <button data-value="2020">2020</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <button class="nav-btn active" data-tab="executive">Executive Overview</button>
+            <button class="nav-btn" data-tab="sales">Sales Analytics</button>
+            <button class="nav-btn" data-tab="products">Product Performance</button>
+            <button class="nav-btn" data-tab="customers">Customer Insights</button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            
+            <!-- Page 1: Executive Overview -->
+            <section id="executive" class="dashboard-page active">
+                <!-- KPI Cards -->
+                <div class="kpi-row">
+                    <div class="kpi-card">
+                        <div class="kpi-value" id="kpi-total-sales">$98.5M</div>
+                        <div class="kpi-label">Total Gross Sales</div>
+                        <div class="kpi-sub positive">
+                            <span class="icon">▲</span> <span id="kpi-sales-growth">+22.4% vs LY</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value" id="kpi-products">334</div>
+                        <div class="kpi-label">Active Products</div>
+                        <div class="kpi-sub positive">
+                            <span class="icon">▲</span> <span>+89 vs LY</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value" id="kpi-growth" style="color: #00CC66;">+36.4%</div>
+                        <div class="kpi-label">YoY Growth</div>
+                        <div class="kpi-sub">
+                            <span>Target: +15%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value" id="kpi-markets">27</div>
+                        <div class="kpi-label">Active Markets</div>
+                        <div class="kpi-sub">
+                            <span>APAC, EU, NA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 1 -->
+                <div class="charts-row">
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>Monthly Gross Sales Trend</h3>
+                        </div>
+                        <canvas id="salesTrendChart"></canvas>
+                    </div>
+                    <div class="chart-container small">
+                        <div class="chart-header">
+                            <h3>Sales by Channel</h3>
+                        </div>
+                        <canvas id="channelDonutChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Charts Row 2 -->
+                <div class="charts-row">
+                    <div class="chart-container medium">
+                        <div class="chart-header">
+                            <h3>Product Count by Segment (2020 vs 2021)</h3>
+                        </div>
+                        <canvas id="productGrowthChart"></canvas>
+                    </div>
+                    <div class="chart-container medium">
+                        <div class="chart-header">
+                            <h3>Top 5 Products by Revenue</h3>
+                        </div>
+                        <canvas id="topProductsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 2: Sales Analytics -->
+            <section id="sales" class="dashboard-page">
+                <div class="chart-header-row">
+                    <h2>Detailed Sales Analysis</h2>
+                </div>
+                <!-- Sales Content (Simplified for V1) -->
+                <div class="charts-row">
+                    <div class="chart-container full-width">
+                        <div class="chart-header">
+                            <h3>Quarterly Performance (Volume)</h3>
+                        </div>
+                        <canvas id="quarterlySalesChart"></canvas>
+                    </div>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>Market Performance (APAC)</h3>
+                            <p class="subtitle">Bubble size represents sales volume</p>
+                        </div>
+                        <div id="map-placeholder" class="placeholder-visual">
+                            <!-- In a real app we'd use Leaflet/Mapbox, for now simple HTML grid -->
+                            <div class="market-grid" id="marketGrid">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 3: Product Performance -->
+            <section id="products" class="dashboard-page">
+                <div class="kpi-row">
+                    <div class="kpi-card alert-high">
+                        <div class="kpi-label">Highest Cost Product</div>
+                        <div class="kpi-value-sm">AQ HOME Allin1 Gen 2</div>
+                        <div class="kpi-value">$240.54</div>
+                    </div>
+                    <div class="kpi-card alert-low">
+                        <div class="kpi-label">Lowest Cost Product</div>
+                        <div class="kpi-value-sm">AQ Master wired x1 Ms</div>
+                        <div class="kpi-value">$0.89</div>
+                    </div>
+                     <div class="kpi-card">
+                        <div class="kpi-label">Cost Variance</div>
+                        <div class="kpi-value">270x</div>
+                        <div class="kpi-sub">Extreme Spread</div>
+                    </div>
+                </div>
+
+                <div class="charts-row">
+                    <div class="chart-container full-width">
+                        <div class="chart-header">
+                            <h3>Top 3 Products by Division</h3>
+                        </div>
+                        <div class="matrix-container" id="topProductsMatrix">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>Product Distribution by Segment</h3>
+                        </div>
+                        <canvas id="segmentTreemapChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Page 4: Customer Insights -->
+             <section id="customers" class="dashboard-page">
+                <div class="charts-row">
+                    <div class="chart-container full-width">
+                        <div class="chart-header">
+                            <h3>Top 5 Discount Customers (India)</h3>
+                            <p class="subtitle warning-text">Note: All exceed 15% threshold</p>
+                        </div>
+                        <canvas id="topDiscountCustomersChart"></canvas>
+                    </div>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>Discount Distribution Histogram</h3>
+                        </div>
+                        <canvas id="discountHistogramChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>

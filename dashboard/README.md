@@ -1,0 +1,31 @@
+# AtliQ Hardwares - Executive Dashboard
+
+## Overview
+This interactive dashboard provides data-driven insights into AtliQ Hardwares' performance for FY2020-2021. It visualizes sales trends, product growth, and customer analytics.
+
+**Tech Stack:** HTML5, CSS3, JavaScript, Chart.js
+
+## 🚀 How to View This Dashboard
+
+### Option 1: Live Demo (Recommended)
+If you are viewing this on GitHub, you can see the live version here:
+[**View Live Dashboard**](https://<YOUR-USERNAME>.github.io/<REPO-NAME>/dashboard/)
+*(Note: You must enable GitHub Pages in Settings > Pages to see this link work)*
+
+### Option 2: Run Locally
+1. Download this repository.
+2. Navigate to the `dashboard` folder.
+3. Double-click `index.html` to open it in your browser.
+   * *Note: Some modern browsers may block local modules. If so, runs the `start_server.bat` file.*
+
+### Option 3: PowerPoint Integration
+To embed this dashboard into a presentation:
+1. Run `start_server.bat` in the background.
+2. Use the "Web Viewer" add-in in PowerPoint.
+3. Point it to `http://localhost:8000/index.html`.
+
+## 📊 Features
+- **Executive View:** High-level KPIs and monthly sales trends.
+- **Sales Analytics:** Interactive maps and quarterly volume analysis.
+- **Product Insights:** Top products, segment growth, and cost variance.
+- **Customer Insights:** Discount analysis and channel performance.
